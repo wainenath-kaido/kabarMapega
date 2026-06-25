@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapega.co — Portal Berita Resmi</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========= TOP BAR ========= -->
+  <div class="topbar">
+    <div class="container-xl d-flex justify-content-between align-items-center">
+      <div class="topbar-left d-flex align-items-center gap-3">
+        <span><i class="fa-regular fa-calendar-days me-1"></i><span id="live-date"></span></span>
+        <span class="d-none d-md-inline"><i class="fa-regular fa-clock me-1"></i><span id="live-time"></span></span>
+      </div>
+      <div class="topbar-right d-flex align-items-center gap-3">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= BREAKING NEWS TICKER ========= -->
+  <div class="breaking-bar">
+    <div class="container-xl d-flex align-items-center">
+      <span class="breaking-label"><i class="fa-solid fa-bolt me-1"></i>BREAKING</span>
+      <div class="ticker-wrap">
+        <div class="ticker-items" id="tickerItems">
+          <span>Pemerintah Papua Tengah umumkan pembangunan jalan trans-Papua sepanjang 320 km</span>
+          <span>Bupati Jayapura resmikan gedung sekolah baru di distrik Sentani Timur</span>
+          <span>Polda Papua tangkap jaringan penyelundupan satwa liar dilindungi di Jayapura</span>
+          <span>Festival Budaya Melanesia 2025 siap digelar di Kota Sorong bulan depan</span>
+          <span>DPRD Papua minta percepatan distribusi Dana Otonomi Khusus ke kabupaten terpencil</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= HEADER / NAVBAR ========= -->
+  <header class="site-header sticky-top">
+    <nav class="navbar navbar-expand-lg" id="mainNavbar">
+      <div class="container-xl">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+          <div class="logo-icon"><i class="fa-solid fa-newspaper"></i></div>
+          <div class="logo-text">
+            <span class="logo-main">Mapega</span><span class="logo-dot">.co</span>
+            <div class="logo-tagline">Portal Berita Resmi Papua</div>
+          </div>
+        </a>
+
+        <!-- Mobile toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Nav links -->
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav mx-auto gap-lg-1">
+            <li class="nav-item"><a class="nav-link active" href="#"><i class="fa-solid fa-house-chimney me-1"></i>Beranda</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="fa-solid fa-map-location-dot me-1"></i>Daerah</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-location-dot me-2"></i>Jayapura</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-location-dot me-2"></i>Papua Tengah</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-location-dot me-2"></i>Papua Barat</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-location-dot me-2"></i>Papua Selatan</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-location-dot me-2"></i>Papua Pegunungan</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-landmark-dome me-1"></i>Politik</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-chart-line me-1"></i>Ekonomi</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-graduation-cap me-1"></i>Pendidikan</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-shield-halved me-1"></i>Hukum</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-masks-theater me-1"></i>Budaya</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-futbol me-1"></i>Olahraga</a></li>
+          </ul>
+          <!-- Search -->
+          <div class="search-box d-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
+            <input type="search" id="searchInput" class="form-control form-control-sm" placeholder="Cari berita…" />
+            <button class="btn btn-sky btn-sm ms-2"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========= HERO + FEATURED NEWS ========= -->
+  <main>
+    <section class="hero-section">
+      <div class="container-xl">
+        <div class="row g-3">
+
+          <!-- Main Hero -->
+          <div class="col-lg-7">
+            <div class="hero-card position-relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt="" class="hero-img w-100" />
+              <div class="hero-overlay">
+                <span class="badge-cat cat-daerah mb-2"><i class="fa-solid fa-map-location-dot me-1"></i>Papua</span>
+                <h1 class="hero-title">Pembangunan Infrastruktur Papua Terus Dipercepat Demi Pemerataan Nasional</h1>
+                <p class="hero-meta"><i class="fa-regular fa-user me-1"></i>Redaksi Mapega &nbsp;·&nbsp; <i class="fa-regular fa-clock me-1"></i>2 jam lalu &nbsp;·&nbsp; <i class="fa-regular fa-eye me-1"></i>14.2 rb views</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side stack -->
+          <div class="col-lg-5 d-flex flex-column gap-3">
+            <div class="side-card d-flex gap-3">
+              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="" class="side-thumb" />
+              <div class="side-body">
+                <span class="badge-cat cat-politik mb-1"><i class="fa-solid fa-landmark-dome me-1"></i>Politik</span>
+                <h5 class="side-title">Pemilihan Kepala Daerah Papua 2025 Mulai Masuki Tahap Pendaftaran Calon</h5>
+                <p class="side-meta"><i class="fa-regular fa-clock me-1"></i>4 jam lalu</p>
+              </div>
+            </div>
+            <div class="side-card d-flex gap-3">
+              <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80" alt="" class="side-thumb" />
+              <div class="side-body">
+                <span class="badge-cat cat-sosial mb-1"><i class="fa-solid fa-heart me-1"></i>Sosial</span>
+                <h5 class="side-title">Ribuan Anak Papua Kini Mendapat Akses Pendidikan Berkualitas di Daerah Terpencil</h5>
+                <p class="side-meta"><i class="fa-regular fa-clock me-1"></i>6 jam lalu</p>
+              </div>
+            </div>
+            <div class="side-card d-flex gap-3">
+              <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80" alt="" class="side-thumb" />
+              <div class="side-body">
+                <span class="badge-cat cat-budaya mb-1"><i class="fa-solid fa-masks-theater me-1"></i>Budaya</span>
+                <h5 class="side-title">Festival Seni Tradisional Suku Asmat Menarik Perhatian Wisatawan Mancanegara</h5>
+                <p class="side-meta"><i class="fa-regular fa-clock me-1"></i>8 jam lalu</p>
+              </div>
+            </div>
+            <div class="side-card d-flex gap-3">
+              <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&q=80" alt="" class="side-thumb" />
+              <div class="side-body">
+                <span class="badge-cat cat-ekonomi mb-1"><i class="fa-solid fa-chart-line me-1"></i>Ekonomi</span>
+                <h5 class="side-title">Investasi Sektor Pertambangan Papua Capai Rp 47 Triliun Sepanjang 2025</h5>
+                <p class="side-meta"><i class="fa-regular fa-clock me-1"></i>10 jam lalu</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= MAIN CONTENT + SIDEBAR ========= -->
+    <section class="content-section">
+      <div class="container-xl">
+        <div class="row g-4">
+
+          <!-- LEFT: News Grid -->
+          <div class="col-lg-8">
+
+            <!-- Berita Terkini -->
+            <div class="section-header d-flex align-items-center justify-content-between mb-3">
+              <h2 class="section-title"><span class="title-bar"></span>Berita Terkini</h2>
+              <a href="#" class="btn-more">Lihat Semua <i class="fa-solid fa-arrow-right ms-1"></i></a>
+            </div>
+            <div class="row g-3 mb-5" id="newsGrid">
+
+              <div class="col-md-6">
+                <article class="news-card">
+                  <div class="news-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="" />
+                    <span class="badge-cat cat-hukum news-badge"><i class="fa-solid fa-shield-halved me-1"></i>Hukum</span>
+                  </div>
+                  <div class="news-body">
+                    <h4 class="news-title">Pengadilan Negeri Jayapura Vonis 12 Tahun Tersangka Korupsi Dana Desa</h4>
+                    <p class="news-excerpt">Majelis hakim menjatuhkan hukuman berat kepada terdakwa yang terbukti menggelapkan dana desa senilai Rp 3,8 miliar.</p>
+                    <div class="news-meta d-flex align-items-center gap-3">
+                      <span><i class="fa-regular fa-user me-1"></i>Ahmad Haris</span>
+                      <span><i class="fa-regular fa-clock me-1"></i>1 jam lalu</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-md-6">
+                <article class="news-card">
+                  <div class="news-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1574169208507-84376144848b?w=600&q=80" alt="" />
+                    <span class="badge-cat cat-ekonomi news-badge"><i class="fa-solid fa-chart-line me-1"></i>Ekonomi</span>
+                  </div>
+                  <div class="news-body">
+                    <h4 class="news-title">Pelabuhan Sorong Catat Rekor Arus Bongkar Muat Barang Tertinggi dalam Sejarah</h4>
+                    <p class="news-excerpt">Dengan volume 1,2 juta ton per bulan, Pelabuhan Sorong kini menjadi hub logistik utama kawasan timur Indonesia.</p>
+                    <div class="news-meta d-flex align-items-center gap-3">
+                      <span><i class="fa-regular fa-user me-1"></i>Sri Wahyuni</span>
+                      <span><i class="fa-regular fa-clock me-1"></i>3 jam lalu</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-md-6">
+                <article class="news-card">
+                  <div class="news-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1541848756149-e3843fcbbde0?w=600&q=80" alt="" />
+                    <span class="badge-cat cat-daerah news-badge"><i class="fa-solid fa-map-location-dot me-1"></i>Daerah</span>
+                  </div>
+                  <div class="news-body">
+                    <h4 class="news-title">Bupati Pegunungan Bintang Luncurkan Program Listrik Matahari untuk 40 Kampung</h4>
+                    <p class="news-excerpt">Pemerintah kabupaten bekerja sama dengan PLN memasang panel surya di wilayah-wilayah yang belum terjangkau jaringan listrik.</p>
+                    <div class="news-meta d-flex align-items-center gap-3">
+                      <span><i class="fa-regular fa-user me-1"></i>Mery Kogoya</span>
+                      <span><i class="fa-regular fa-clock me-1"></i>5 jam lalu</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-md-6">
+                <article class="news-card">
+                  <div class="news-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80" alt="" />
+                    <span class="badge-cat cat-olahraga news-badge"><i class="fa-solid fa-futbol me-1"></i>Olahraga</span>
+                  </div>
+                  <div class="news-body">
+                    <h4 class="news-title">Atlet Papua Borong Medali di Kejuaraan Tinju Nasional Piala Gubernur 2025</h4>
+                    <p class="news-excerpt">Kontingen Papua membawa pulang 7 medali emas dan 4 perak dalam ajang bergengsi yang diikuti 34 provinsi se-Indonesia.</p>
+                    <div class="news-meta d-flex align-items-center gap-3">
+                      <span><i class="fa-regular fa-user me-1"></i>Benny Wambrauw</span>
+                      <span><i class="fa-regular fa-clock me-1"></i>7 jam lalu</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-md-6">
+                <article class="news-card">
+                  <div class="news-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80" alt="" />
+                    <span class="badge-cat cat-pendidikan news-badge"><i class="fa-solid fa-graduation-cap me-1"></i>Pendidikan</span>
+                  </div>
+                  <div class="news-body">
+                    <h4 class="news-title">Universitas Cenderawasih Buka Prodi Kecerdasan Buatan Pertama di Papua</h4>
+                    <p class="news-excerpt">Program studi AI dan data sains ini dirancang untuk mempersiapkan generasi muda Papua menghadapi era digital 4.0.</p>
+                    <div class="news-meta d-flex align-items-center gap-3">
+                      <span><i class="fa-regular fa-user me-1"></i>Dr. Fitri Lase</span>
+                      <span><i class="fa-regular fa-clock me-1"></i>9 jam lalu</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-md-6">
+                <article class="news-card">
+                  <div class="news-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80" alt="" />
+                    <span class="badge-cat cat-daerah news-badge"><i class="fa-solid fa-map-location-dot me-1"></i>Lingkungan</span>
+                  </div>
+                  <div class="news-body">
+                    <h4 class="news-title">Danau Sentani Kembali Dipulihkan, Keramba Ilegal Ditertibkan Besar-besaran</h4>
+                    <p class="news-excerpt">Pemkot Jayapura bersama komunitas warga adat berhasil mengurangi 60% pencemaran di kawasan Danau Sentani dalam dua bulan.</p>
+                    <div class="news-meta d-flex align-items-center gap-3">
+                      <span><i class="fa-regular fa-user me-1"></i>Yosep Manua</span>
+                      <span><i class="fa-regular fa-clock me-1"></i>11 jam lalu</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+
+            <!-- Berita Foto -->
+            <div class="section-header d-flex align-items-center justify-content-between mb-3">
+              <h2 class="section-title"><span class="title-bar"></span>Berita Foto</h2>
+              <a href="#" class="btn-more">Lihat Semua <i class="fa-solid fa-arrow-right ms-1"></i></a>
+            </div>
+            <div class="photo-grid row g-2 mb-5">
+              <div class="col-6 col-md-4">
+                <div class="photo-item">
+                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="" />
+                  <div class="photo-caption">Pegunungan Papua yang Megah</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="photo-item">
+                  <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=500&q=80" alt="" />
+                  <div class="photo-caption">Ritual Adat Suku Dani</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="photo-item">
+                  <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&q=80" alt="" />
+                  <div class="photo-caption">Keindahan Pesisir Raja Ampat</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="photo-item">
+                  <img src="https://images.unsplash.com/photo-1541704328070-20bf4601ae3e?w=500&q=80" alt="" />
+                  <div class="photo-caption">Pasar Tradisional Sentani</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="photo-item">
+                  <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=500&q=80" alt="" />
+                  <div class="photo-caption">Hutan Tropis Kaimana</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="photo-item">
+                  <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=500&q=80" alt="" />
+                  <div class="photo-caption">Matahari Terbit di Cenderawasih</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Berita -->
+            <div class="section-header d-flex align-items-center justify-content-between mb-3">
+              <h2 class="section-title"><span class="title-bar"></span>Video Berita</h2>
+              <a href="#" class="btn-more">Lihat Semua <i class="fa-solid fa-arrow-right ms-1"></i></a>
+            </div>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <div class="video-card">
+                  <div class="video-thumb">
+                    <img src="https://images.unsplash.com/photo-1565772949936-fe0ac6ea4ac2?w=600&q=80" alt="" />
+                    <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    <span class="video-duration">04:32</span>
+                  </div>
+                  <div class="video-body">
+                    <h5>Liputan Khusus: Kehidupan Masyarakat Adat di Pedalaman Papua</h5>
+                    <p class="news-meta"><i class="fa-regular fa-eye me-1"></i>8.4 rb ditonton</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="video-card">
+                  <div class="video-thumb">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80" alt="" />
+                    <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    <span class="video-duration">07:15</span>
+                  </div>
+                  <div class="video-body">
+                    <h5>Eksklusif: Wawancara Gubernur Papua Soal Otonomi Khusus 2025</h5>
+                    <p class="news-meta"><i class="fa-regular fa-eye me-1"></i>21.7 rb ditonton</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: Sidebar -->
+          <div class="col-lg-4">
+
+            <!-- Trending -->
+            <div class="sidebar-widget mb-4">
+              <div class="widget-header"><i class="fa-solid fa-fire-flame-curved me-2"></i>Trending Hari Ini</div>
+              <div class="trending-list">
+                <div class="trending-item d-flex gap-3 align-items-start">
+                  <span class="trend-num">01</span>
+                  <div>
+                    <h6 class="trend-title">Polisi Ungkap Jaringan TPPO Lintas Provinsi yang Targetkan Perempuan Papua</h6>
+                    <span class="trend-meta"><i class="fa-regular fa-clock me-1"></i>30 menit lalu</span>
+                  </div>
+                </div>
+                <div class="trending-item d-flex gap-3 align-items-start">
+                  <span class="trend-num">02</span>
+                  <div>
+                    <h6 class="trend-title">BNPB Siagakan Tim Tanggap Darurat Bencana di 6 Kabupaten Papua Tengah</h6>
+                    <span class="trend-meta"><i class="fa-regular fa-clock me-1"></i>1 jam lalu</span>
+                  </div>
+                </div>
+                <div class="trending-item d-flex gap-3 align-items-start">
+                  <span class="trend-num">03</span>
+                  <div>
+                    <h6 class="trend-title">Freeport Indonesia Rekrut 500 Karyawan Lokal dari Kabupaten Mimika</h6>
+                    <span class="trend-meta"><i class="fa-regular fa-clock me-1"></i>2 jam lalu</span>
+                  </div>
+                </div>
+                <div class="trending-item d-flex gap-3 align-items-start">
+                  <span class="trend-num">04</span>
+                  <div>
+                    <h6 class="trend-title">Festival Lembah Baliem 2025 Resmi Dibuka, Ribuan Wisatawan Hadir</h6>
+                    <span class="trend-meta"><i class="fa-regular fa-clock me-1"></i>3 jam lalu</span>
+                  </div>
+                </div>
+                <div class="trending-item d-flex gap-3 align-items-start">
+                  <span class="trend-num">05</span>
+                  <div>
+                    <h6 class="trend-title">Kapal Pelni Rute Jayapura–Makassar Tambah Frekuensi Pelayaran</h6>
+                    <span class="trend-meta"><i class="fa-regular fa-clock me-1"></i>4 jam lalu</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Opini -->
+            <div class="sidebar-widget mb-4">
+              <div class="widget-header"><i class="fa-solid fa-pen-nib me-2"></i>Opini & Kolom</div>
+              <div class="opini-item d-flex gap-3 mb-3">
+                <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=100&q=80" alt="" class="opini-avatar" />
+                <div>
+                  <h6 class="opini-title">Otonomi Khusus: Sudahkah Menyentuh Akar Masalah Papua?</h6>
+                  <span class="opini-author">Prof. Yohanes Mansoben, Ph.D</span>
+                </div>
+              </div>
+              <div class="opini-item d-flex gap-3 mb-3">
+                <img src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=100&q=80" alt="" class="opini-avatar" />
+                <div>
+                  <h6 class="opini-title">Digitalisasi Ekonomi Papua: Peluang atau Ancaman bagi UMKM Lokal?</h6>
+                  <span class="opini-author">Dr. Marthen Kayoi, SE., MM</span>
+                </div>
+              </div>
+              <div class="opini-item d-flex gap-3">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="" class="opini-avatar" />
+                <div>
+                  <h6 class="opini-title">Pentingnya Pendekatan Adat dalam Penyelesaian Konflik di Papua</h6>
+                  <span class="opini-author">Magdalena Ohee, SH., MHum</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Jadwal Sholat / Info Lokal -->
+            <div class="sidebar-widget mb-4">
+              <div class="widget-header"><i class="fa-solid fa-sun me-2"></i>Info Cuaca Jayapura</div>
+              <div class="weather-widget text-center py-2">
+                <div class="weather-temp">28°C</div>
+                <div class="weather-cond"><i class="fa-solid fa-cloud-sun me-1"></i>Berawan Sebagian</div>
+                <div class="weather-detail d-flex justify-content-around mt-3">
+                  <div><i class="fa-solid fa-droplet me-1"></i><span>78%</span><br><small>Kelembaban</small></div>
+                  <div><i class="fa-solid fa-wind me-1"></i><span>12 km/h</span><br><small>Angin</small></div>
+                  <div><i class="fa-solid fa-eye me-1"></i><span>8 km</span><br><small>Visibilitas</small></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Polling -->
+            <div class="sidebar-widget mb-4">
+              <div class="widget-header"><i class="fa-solid fa-chart-bar me-2"></i>Polling Pembaca</div>
+              <div class="poll-wrap p-3">
+                <p class="poll-question">Bagaimana penilaian Anda terhadap pembangunan infrastruktur Papua saat ini?</p>
+                <div class="poll-option" data-poll="1">
+                  <div class="poll-bar" style="--w:62%"><span>Sangat Baik</span><b>62%</b></div>
+                </div>
+                <div class="poll-option" data-poll="2">
+                  <div class="poll-bar" style="--w:24%"><span>Cukup Baik</span><b>24%</b></div>
+                </div>
+                <div class="poll-option" data-poll="3">
+                  <div class="poll-bar" style="--w:9%"><span>Kurang Baik</span><b>9%</b></div>
+                </div>
+                <div class="poll-option" data-poll="4">
+                  <div class="poll-bar" style="--w:5%"><span>Tidak Baik</span><b>5%</b></div>
+                </div>
+                <p class="poll-total mt-2"><i class="fa-solid fa-users me-1"></i>4.219 suara</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section> 
+
+    <!-- ========= BANNER STRIP ========= -->
+    <section class="banner-strip">
+      <div class="container-xl">
+        <div class="row g-3 align-items-center">
+          <div class="col-md-6 col-lg-3">
+            <div class="stat-block text-center">
+              <div class="stat-num" data-target="4820000">0</div>
+              <div class="stat-label">Pembaca / Bulan</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="stat-block text-center">
+              <div class="stat-num" data-target="12500">0</div>
+              <div class="stat-label">Artikel Diterbitkan</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="stat-block text-center">
+              <div class="stat-num" data-target="86">0</div>
+              <div class="stat-label">Jurnalis Aktif</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="stat-block text-center">
+              <div class="stat-num" data-target="29">0</div>
+              <div class="stat-label">Kabupaten Terliputi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= NEWSLETTER ========= -->
+    <section class="newsletter-section">
+      <div class="container-xl">
+        <div class="newsletter-box d-flex flex-column flex-md-row align-items-center justify-content-between gap-4">
+          <div>
+            <h3 class="newsletter-title"><i class="fa-solid fa-envelope-open-text me-2"></i>Langganan Newsletter Mapega</h3>
+            <p class="newsletter-sub">Dapatkan ringkasan berita terpenting Papua langsung di inbox Anda setiap pagi.</p>
+          </div>
+          <div class="newsletter-form d-flex gap-2 flex-shrink-0">
+            <input type="email" class="form-control" placeholder="email@anda.com" />
+            <button class="btn btn-newsletter">Daftar <i class="fa-solid fa-paper-plane ms-1"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========= FOOTER ========= -->
+  <footer class="site-footer">
+    <div class="container-xl">
+      <div class="row g-4 py-5">
+
+        <!-- Brand -->
+        <div class="col-lg-4">
+          <a class="d-flex align-items-center gap-2 mb-3 text-decoration-none" href="#">
+            <div class="logo-icon footer-logo"><i class="fa-solid fa-newspaper"></i></div>
+            <div class="logo-text">
+              <span class="logo-main">Mapega</span><span class="logo-dot">.co</span>
+            </div>
+          </a>
+          <p class="footer-desc">Portal berita resmi dan terpercaya yang menghadirkan informasi aktual tentang Papua dan Indonesia timur sejak 2015. Berkomitmen pada jurnalisme yang berimbang, akurat, dan berpihak pada masyarakat.</p>
+          <div class="footer-socials d-flex gap-3 mt-3">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="X/Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Rubrik -->
+        <div class="col-6 col-lg-2">
+          <h6 class="footer-heading">Rubrik</h6>
+          <ul class="footer-list">
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Politik</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Ekonomi</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Hukum & Kriminal</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Pendidikan</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Budaya & Seni</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Olahraga</a></li>
+          </ul>
+        </div>
+
+        <!-- Tentang -->
+        <div class="col-6 col-lg-2">
+          <h6 class="footer-heading">Tentang Kami</h6>
+          <ul class="footer-list">
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Profil Redaksi</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Kode Etik</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Kebijakan Privasi</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Syarat & Ketentuan</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Karir di Mapega</a></li>
+            <li><a href="#"><i class="fa-solid fa-chevron-right me-1"></i>Hubungi Kami</a></li>
+          </ul>
+        </div>
+
+        <!-- Kontak -->
+        <div class="col-lg-4">
+          <h6 class="footer-heading">Kontak Redaksi</h6>
+          <ul class="footer-contact">
+            <li><i class="fa-solid fa-location-dot"></i>Jl. Paitobi No. 25, Nabire, Papua Tengah 99351</li>
+            <li><i class="fa-solid fa-phone"></i>+62 967 534 210</li>
+            <li><i class="fa-solid fa-envelope"></i>redaksi@mapega.co</li>
+            <li><i class="fa-solid fa-fax"></i>iklan@mapega.co</li>
+          </ul>
+          <div class="mt-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/10px-Camponotus_flavomarginatus_ant.jpg" alt="" style="display:none" />
+            <span class="press-badge"><i class="fa-solid fa-id-badge me-1"></i>Terverifikasi Dewan Pers Indonesia</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center py-3">
+        <p class="mb-0">© 2025 <strong>Mapega.co</strong>. Seluruh hak cipta dilindungi undang-undang.</p>
+        <p class="mb-0 mt-2 mt-md-0">Dibuat dengan <i class="fa-solid fa-heart text-danger mx-1"></i> oleh Tim Kaido-Up dari Jayapura, Papua</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="main.js"></script>
+</body>
+</html>
